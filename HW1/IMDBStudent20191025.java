@@ -20,21 +20,17 @@ public class IMDBStudent20191025
 
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
 		{
-			String replace_value = value.toString().replaceAll("::", "!");
-			StringTokenizer itr = new StringTokenizer(replace_value,"!");
-			while (itr.hasMoreTokens()) 
+		
+			String line[] = value.toString().split("::");
+			String genre_list = line[2];
+			
+			StringTokenizer itr2 = new StringTokenizer(genre_list,"|");
+			while(itr2.hasMoreTokens())
 			{
-				String id = itr.nextToken();
-				String name = itr.nextToken();
-				String list = itr.nextToken();
-				
-				StringTokenizer itr2 = new StringTokenizer(list,"|");
-				while(itr2.hasMoreTokens())
-				{
-					genre.set(itr2.nextToken());
-					context.write(genre, one);
-				}
+				genre.set(itr2.nextToken());
+				context.write(genre, one);
 			}
+			
 		}
 	}
 
