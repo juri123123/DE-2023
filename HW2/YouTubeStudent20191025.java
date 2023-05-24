@@ -120,11 +120,20 @@ public class YouTubeStudent20191025
 		}
 		protected void cleanup (Context context) throws IOException, InterruptedException
 		{
+			
+			List<Youtube> list = new ArrayList<Youtube>();
 			while(queue.size() != 0 )
 			{
 				Youtube youtube = (Youtube) queue.remove();
-				context.write(new Text(youtube.getCategory()), new DoubleWritable( youtube.getAverage()));
+				
+				list.add(youtube);
+				//context.write(new Text(youtube.getCategory()), new DoubleWritable( youtube.getAverage()));
 			}
+			for (int i=list.size()-1; i>=0; i--)
+			{
+				context.write(new Text(list.get(i).getCategory()), new DoubleWritable( list.get(i).getAverage()));
+			}
+			
 		}
 	}
 	
