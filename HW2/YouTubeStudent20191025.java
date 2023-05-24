@@ -77,6 +77,7 @@ public class YouTubeStudent20191025
 			String id3 = itr.nextToken();
 			String cate = itr.nextToken();
 			String id4 = itr.nextToken();
+			String id5 = itr.nextToken();
 			double avr = Double.parseDouble(itr.nextToken());
 			
 			map_key.set(cate);
