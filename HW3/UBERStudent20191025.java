@@ -50,7 +50,8 @@ public final class UBERStudent20191025 {
 			LocalDate date_a = LocalDate.of(year,month,day);
 			DayOfWeek dayOfWeek = date_a.getDayOfWeek();
 			String result = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.US);
-			key = id + "," + result;
+			String result_upper = result.toUpperCase();
+			key = id + "," + result_upper;
             	}
             	
                 return new Tuple2(key, value);
